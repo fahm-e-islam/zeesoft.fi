@@ -1,0 +1,19 @@
+﻿@model ZeeSoft.ClassRoomJson.ClassSchedule
+@{
+    var clsName = ZeeSoft.ClassRoomJson.Academy.Current.GetClassById(Model.ClassId).ClassDisplayName;
+ 
+    
+}
+<tr>
+    <td>@clsName </td>
+ 
+    <td>@Html.DisplayFor(x => x.Start)</td>
+    <td>@Html.DisplayFor(x => x.End)</td>
+    <td>@Html.DisplayFor(x => x.Status)</td>
+    <td>@Html.DisplayFor(x => x.Remarks)</td>
+    <td>
+       @Html.ActionLink("New...", "NewSession", "Teacher", new { scheduleId=Model.Id },null)
+    </td>
+</tr>
+
+

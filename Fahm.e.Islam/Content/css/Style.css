@@ -1,0 +1,106 @@
+body{
+    background: url("../pics/bg.jpg") center fixed;
+}
+/*.container:not(.body-content)
+{
+    background: #ffffff;
+    border-radius: 5px;
+    border: 2px solid darkblue;
+    border-top: 26px solid cornflowerblue;
+}*/
+.panel-heading {
+    cursor: pointer;
+}
+hr {
+    border: 0;
+    height: 1px;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+}
+.page-header
+{
+    border-bottom: none;
+}
+.blockquote
+{
+    background: #f7f7f7;
+    border-left: 5px solid #009fe3;
+    padding: 20px;
+    font-size: small;
+    box-shadow: 5px 5px 5px lightgray;
+}
+.breadcrumb
+{
+    cursor: pointer;
+}
+.breadcrumb>li>a:hover
+{
+    color: #009fe3;
+    text-decoration: none;
+}
+.media-object
+{
+    width: 350px;
+}
+.panel:not(.media-body>.panel)
+{
+    margin-top:80px;
+}
+.brand
+{
+    background-image: url("~/Content/pics/logo.gif")
+}
+.media-body > ul >li
+{
+    font-family: 'Arial Unicode MS';
+    font-size: large;
+}
+.nav.nav-pills.nav-stacked > li.header {
+    border-bottom: 1px solid #DDD;
+    color: #777;
+    margin-bottom: 10px;
+    padding: 5px 10px;
+    text-transform: uppercase;
+}
+.nav-pills > li,
+.nav-pills > li > a{
+   background: white;
+   color: #444;
+   border-radius: 0px;
+}
+    .nav-pills > li.active > a, .nav-pills > li.active > a:focus, .nav-pills > li.active > a:hover {
+        color: #000;
+        background-color: lightgray;
+        border-left: 5px solid #0070b2;
+    }
+
+       .HideMsgType,.HideSendMsgBtn{
+            display:none;
+        }
+        .msgType_Message {
+            background: 50% 50% no-repeat url("http://9room9.com/app/webroot/img/icons/icon-mail.png");
+        }
+         .msgType_News {
+            background: 50% 50% no-repeat url("@Fahm_e_Islam.Helpers.Constants.App_Root.ToString()/Content/images/news_msg.png");
+        }
+         .msgType_Announement {
+            background: 50% 50% no-repeat url("@Fahm_e_Islam.Helpers.Constants.App_Root.ToString()/Content/images/annoucement_msg.png");
+        }
+        .msgType_Reminder {
+            background: 50% 50% no-repeat url("@Fahm_e_Islam.Helpers.Constants.App_Root.ToString()/Content/images/reminder_msg.png");
+        }
+        .msgType_Alert {
+            background: 50% 50% no-repeat url("@Fahm_e_Islam.Helpers.Constants.App_Root.ToString()/Content/images/yellow_alert_msg.png");
+        }
+        .msgType_Warning {
+            background: 50% 50% no-repeat url("@Fahm_e_Islam.Helpers.Constants.App_Root.ToString()/Content/images/red_alert_msg.png");
+        }
+        .Read{
+            font-weight:normal;
+            background-color:#FAFAFA;
+          
+        }
+        .Unread{
+            
+              font-weight:bold;
+
+        }

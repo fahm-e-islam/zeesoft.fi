@@ -1,0 +1,68 @@
+﻿@model ZeeSoft.ClassRoomJson.Message
+
+
+
+@using (Ajax.BeginForm("SendMsg", "User", new AjaxOptions
+                {
+                    HttpMethod = "POST",
+                    OnBegin = "OnSendStarted",
+                    OnSuccess = "OnSendSucceeded",
+                    OnComplete="OnSendCompleted",
+                    OnFailure="OnSendFailed",
+                    UpdateTargetId = "divMsgBack"
+                    
+                })
+                    )
+            {
+<div class="modal fade in" id="myModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title"><i class="glyphicon glyphicon-envelope-o"></i> @ViewBag.MsgTitle</h4>
+            </div>
+
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true)
+            <div class="modal-body">
+                <div class="form-group" id="divRec">
+                    @Html.LabelFor(model => model.CmbRecipients, new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @if (Model.Id == Guid.Empty)
+                        {
+                            @Html.ListBoxFor(model => model.RecipientIds, Model.CmbRecipients, new { @class = "form-control", @placeholder = "Message" })
+                            @Html.ValidationMessageFor(model => model.RecipientIds)
+                        }
+                        else
+                        {
+                            <text> @Model.GetTo()</text>
+                        }
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Body, new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.TextAreaFor(model => model.Body, new { @class = "form-control", @placeholder = "Message" })
+                        @Html.ValidationMessageFor(model => model.Body)
+                    </div>
+                </div>
+                <div class="form-group @ViewBag.HideMsgType">
+                    @Html.LabelFor(model => model.MessageType, new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.MessageType, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.MessageType)
+                    </div>
+                </div>
+
+                <div class="divMsgBack"></div>
+                <div class="modal-footer">
+                    <button id="btnSendMsg" type="submit" class="btn btn-primary  @ViewBag.HideSendMsgBtn" data-dismiss=" modal"><i class="glyphicon glyphicon-envelope"></i> Send Message</button>
+                    <button id="btnDiscardMsg" type="button" class="btn btn-danger" data-dismiss="modal"><i class="glyphicon glyphicon-trash"></i> Discard</button>
+
+                </div>
+
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div>
+ </div>
+}

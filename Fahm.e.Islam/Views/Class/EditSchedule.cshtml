@@ -1,0 +1,121 @@
+﻿@model ZeeSoft.ClassRoomJson.ClassSchedule
+
+@{
+    ViewBag.Title = "Edit Class Schedule";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<script>
+    $(document).ready(function () {
+        $('.txtDate').on('change', function () {
+            var confirm = window.confirm("This will reset current schedule for this class! Proceed?");
+            if (confirm==true)
+            window.location.href = '/Class/EditSchedule?classId=' + $("#ClassId").val() + '&dtFrom=' + $("#Start").val() + '&dtTo=' + $("#End").val();
+            //$('#tabDays').load('/Class/Days?classId='+$("#ClassId").val()+'&dtFrom=' + $("#Start").val() + '&dtTo=' + $("#End").val());
+        });
+    });
+    function OnStarted() {
+        //show msg div with text: "Submitting..."
+        $('#divMsgBack').fadeIn(1000);
+        $('#divMsgBack').removeClass('hide');
+        $('#divMsgBack').text('Saving...');
+    }
+    function OnCompleted() {
+       // $("#divMsgBack").text("Changes saved.");
+        $("#divMsgBack").delay(5000).fadeOut(2000);
+        //clear inputs
+        //$('.form-control').val('');
+
+    }
+</script>
+
+<h2>@ViewBag.Title</h2>
+
+@using (Ajax.BeginForm("EditSchedule", "Class", new AjaxOptions
+{
+    HttpMethod = "POST",
+    UpdateTargetId = "divMsgBack",
+    OnBegin = "OnStarted",
+    OnComplete = "OnCompleted"
+}))
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>@ZeeSoft.ClassRoomJson.Academy.Current.GetClassById(Model.ClassId).ClassDisplayName</h4>
+        <hr />
+        @Html.ValidationSummary(true)
+        <div class="form-group">
+            @Html.LabelFor(model => model.CmbStudents, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.ListBoxFor(x => x.Students, Model.CmbStudents, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Students)
+            </div>
+        </div>
+       
+      
+        <div class="form-group">
+            @Html.LabelFor(model => model.Status, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Status)
+                @Html.ValidationMessageFor(model => model.Status)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Remarks, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Remarks)
+                @Html.ValidationMessageFor(model => model.Remarks)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Start, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.Start, new { @class = "txtDate datetype" })
+                @Html.ValidationMessageFor(model => model.Start)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.End, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.End, new { @class = "txtDate datetype" })
+                @Html.ValidationMessageFor(model => model.End)
+            </div>
+        </div>
+                @Html.HiddenFor(model => model.Id)
+               @Html.HiddenFor(model => model.ClassId)
+        <div id="tabDays">
+            @*@{Html.RenderPartial("_Days", Model.Days);}*@
+
+            <table class="table table-bordered table-responsive table-hover">
+                <thead class="bg-success">
+                    <tr>
+                        <th>Date</th>
+                        <th>Status</th>
+                        <th>Remarks</th>
+
+                    </tr>
+
+                </thead>
+                <tbody class="bg-info">
+                    @Html.EditorFor(model=>model.Days)
+                </tbody>
+            </table>
+        </div>
+       
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save Changes" class="btn btn-success" />
+            </div>
+        </div>
+        <div id="divMsgBack" class="alert alert-success hide" role="alert">
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

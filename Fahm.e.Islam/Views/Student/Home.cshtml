@@ -1,0 +1,29 @@
+﻿@model WebApplication2.Models.StudentDashboard
+@{
+    ViewBag.Title = "Home";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<br><br>
+        <div class="jumbotron">
+            <h3>Files:</h3>
+            <div id="tboard_Classes">
+
+                    <table class="table table-bordered table-responsive">
+
+                        <thead class="bg-primary">
+                            <tr>
+                                <td> Name </td>
+                                <td>Remarks</td>
+                                <td>DateModified</td>
+                                <td>DateCreated</td>
+                                <td>Size</td>
+                                <td>Shared By</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @Html.DisplayFor(x => x.Files)
+                        </tbody>
+                    </table>
+            </div>
+
+        </div>

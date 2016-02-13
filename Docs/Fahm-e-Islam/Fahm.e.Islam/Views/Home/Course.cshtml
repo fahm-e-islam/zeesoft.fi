@@ -1,0 +1,144 @@
+﻿@{
+    ViewBag.Title = "Course";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+    <div class="panel panel-primary">
+        <div class="panel-heading text-center"><h2>Courses</h2></div>
+        <div class="panel-body">
+            @*<ul class="breadcrumb">
+                <li>@Html.ActionLink("All", "Course", "Home")</li>
+                <li>@Html.ActionLink("Quran Reading", "QuranReading", "Home")</li>
+                <li>@Html.ActionLink("Quran Memorizing", "QuranMemorization", "Home")</li>
+                <li>@Html.ActionLink("Purity & Worship", "Purity", "Home")</li>
+                <li>@Html.ActionLink("Arabic & Manners Of Life", "SimpleArabic", "Home")</li>
+                <li>@Html.ActionLink("Beliefs & Duties Of Islam", "Beliefs", "Home")</li>
+                <li>@Html.ActionLink("Hadith & Islamic Fiqh", "HadithFiqh", "Home")</li>
+                <li>@Html.ActionLink("Islamic History", "IslamHstry", "Home")</li>
+            </ul>*@
+            <!--courses-->
+            <div class="media col-sm-11">
+                <div class="media-left ">
+                    <img class="media-object  img-thumbnail img-responsive" src="~/Content/pics/media1.jpg" alt="...">
+                </div>
+                <div class="media-body">
+                    <h4 class="media-heading">Quran Reading with Tajweed( تجوید و نا ظرۂ قران )</h4>
+                    @Html.Partial("QuranReading")
+                      <ul >
+                        <li>اھميت تجويد</li>
+                        <li>مشق قرات</li>
+                        <li>پہچان مخارج</li>
+                        <li>اھم مسائل تجويد</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="media col-sm-11">
+                <div class="media-left ">
+                    <img class="media-object  img-thumbnail img-responsive" src="~/Content/pics/media2.jpg" alt="...">
+                </div>
+                <div class="media-body">
+                    <h4 class="media-heading">Quran Memorizaion( حفظ قران )</h4>
+                    @Html.Partial("QuranMemorization")
+                     <ul>
+                        <li>علم اوقاف </li>
+                        <li>گردان</li>
+                        <li>ھفتہ وار امتحان</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="media col-sm-11">
+                <div class="media-left ">
+                    <img class="media-object  img-thumbnail img-responsive" src="~/Content/pics/worship.jpg" alt="...">
+                </div>
+                <div class="media-body">
+                    <h4 class="media-heading">Purity &amp; Worship( طھارت و نماز )</h4>
+                    @Html.Partial("Purity")
+                     <ul>
+                        <li>اھميت طھارت</li>
+                        <li>اھميت نماز</li>
+                        <li>فرق طھارت اور نظافت کے درمیان</li>
+                        <li>فرق نماز اور ريگر عبادات</li>
+                        <li>طھارت کے دینی و دنیاوی فوائد</li>
+                        <li>نماز کے دینی و دنیاوی فوائد</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="media col-sm-11">
+                <div class="media-left ">
+                    <img class="media-object  img-thumbnail img-responsive" src="~/Content/pics/tajweed.jpg" alt="...">
+                </div>
+                <div class="media-body">
+                    <h4 class="media-heading">Easy Arabic &amp; Manners Of Life( آسان عربی و آداب زندگی )</h4>
+                    @Html.Partial("Purity")
+                     <ul>
+                        <li>زخیرہ الفاظ عربی</li>
+                        <li>عام عربی بول چال</li>
+                        <li>اہمیت عربی زبان</li>
+                        <li>اسلامی آداب زندگی اور اسکے فوائد</li>
+                        <li>اسلامی آداب کی خصوصیات خاصہ</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="media col-sm-11">
+                <div class="media-left ">
+                    <img class="media-object  img-thumbnail img-responsive" src="~/Content/pics/belief.jpg" alt="...">
+                </div>
+                <div class="media-body">
+                    <h4 class="media-heading">Beliefs &amp; Duties Of Islam( عقائد و فرائض اسلام )</h4>
+                    @Html.Partial("Beliefs")
+                     <ul>
+                        <li>تعرف عقائد و فریضہ</li>
+                        <li>ضروریات دین</li>
+                        <li>اہمیت عقائد و فرائض</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="media col-sm-11">
+                <div class="media-left ">
+                    <img class="media-object  img-thumbnail img-responsive" src="~/Content/pics/media4.jpg" alt="...">
+                </div>
+                <div class="media-body">
+                    <h4 class="media-heading">Hadith &amp; Islamic Fiqh( احادیث مبارکہ و فقۂ اسلام )</h4>
+                    @Html.Partial("HadithFiqh")
+                      <ul>
+                        <li>حفظ احادیث مبارکہ</li>
+                        <li>ترجمہ و تشریح ا حادیث مبارکہ</li>
+                        <li>مقام احادیث اسلام میں</li>
+                        <li>حدیث کی تعریف ، موضوع و غرض و غایت</li>
+                        <li>اہم د یني مسا ئل زند گی</li>
+                        <li>فقہ کا تعارف </li>
+                        <li>فقہ کی اہمیت و ا فادیت</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="media col-sm-11">
+                <div class="media-left ">
+                    <img class="media-object  img-thumbnail img-responsive" src="~/Content/pics/history.jpg" alt="...">
+                </div>
+                <div class="media-body">
+                    <h4 class="media-heading">Islamic Hostory &amp; Quranic Translation( تاریخ اسلام و ترجمہ قران )</h4>
+                    @Html.Partial("IslamHstry")
+                    <ul>
+                        <li>: ترجمہ
+                            <ol>
+                                <li>سورۃ فاتحہ</li>
+                                <li>سورۃ نساء</li>
+                                <li>سورۃ کہف</li>
+                                <li>سورۃ بنی اسرائیل</li>
+                                <li>سورۃ نور</li>
+                                <li>سورۃ احزاب</li>
+                                <li>سورۃ فتح</li>
+                            </ol>
+                        </li>
+                        <li>سیرت ا لنبی صلی ا للہ علیہ وسلم</li>
+                        <li>سیرت خلفاء اربعہ رضی ا للہ عنھم اجمعین</li>
+                        <li>سیرت ائمۃ اربعہ رضی اللہ تعا لی</li>
+                        <li>تعارف دور سلا طین مسلمین</li>
+                        <li>اسلام 20 ویں صدی میں</li>
+                        <li>اسلام 21 ویں صدی میں</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>

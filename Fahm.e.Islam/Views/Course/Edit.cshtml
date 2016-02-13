@@ -1,0 +1,98 @@
+﻿@model ZeeSoft.ClassRoomJson.Course
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script type="text/javascript">
+    $(document).ready(function () {
+        var max_fields = 10; //maximum input boxes allowed
+        var wrapper = $(".input_fields_wrap"); //Fields wrapper
+        var add_button = $(".add_field_button"); //Add button ID
+
+        var x = @Model.Topics.Count //initlal text box count
+           
+        $(add_button).click(function (e) { //on add input button click
+            e.preventDefault();
+            if (x < max_fields) { //max input box allowed
+
+                $(wrapper).append('<div><input type="text" id="Topics_' + x + '__Description" name="Topics[' + x + '].Description"/><a href="#" class="remove_field">Remove</a></div>'); //add input box
+                x++; //text box increment
+            }
+        });
+
+        $(wrapper).on("click", ".remove_field", function (e) { //user click on remove text
+            e.preventDefault(); $(this).parent('div').remove(); x--;
+        })
+    });
+</script>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(model => model.Id)
+    <div class="form-horizontal">
+        <div class="page-header">
+            <h1>Edit <small>Course</small></h1>
+            <hr />
+        </div>
+        @Html.ValidationSummary(true)
+        @Html.HiddenFor(model => model.Id)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Name, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Name)
+                @Html.ValidationMessageFor(model => model.Name)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Topics, new { @class = "control-label col-md-2" })
+            <div class="col-md-10" id="divTopics">
+                <div class="input_fields_wrap">
+                    <button class="add_field_button btn btn-primary">Add More Fields</button><br /><br >
+                    @*@Html.EditorFor(model => model.Topics)*@
+                    @for (int i = 0; i < Model.Topics.Count; i++)
+                {
+                        <div>
+                            <div><input type="text" id="Topics_@(i)__Description" name="Topics[@i].Description" value="@Model.Topics[i].Description"><a href="#" class="remove_field">Remove</a></div>
+                        </div>
+                }
+
+
+                    @*<div><input type="text" id="Topics_@(Model.Topics.Count)__Description" name="Topics[@(Model.Topics.Count)].Description"><a href="#" class="remove_field">Remove</a></div>*@
+                </div>
+            </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.NoOfClasses, new { @class = "control-label col-md-2", @type = "number" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.NoOfClasses)
+                    @Html.ValidationMessageFor(model => model.NoOfClasses)
+                </div>
+            </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Status, new { @class = "control-label col-md-2", @type = "number" })
+            <div class="col-md-10">
+                @Html.CheckBoxFor(model => model.Status)
+                @Html.ValidationMessageFor(model => model.Status)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Remarks, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.Remarks)
+                @Html.ValidationMessageFor(model => model.Remarks)
+            </div>
+        </div>
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Save" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

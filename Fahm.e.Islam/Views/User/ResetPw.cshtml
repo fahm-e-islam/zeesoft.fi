@@ -1,0 +1,74 @@
+﻿@model  ZeeSoft.Web.MVC.FI.Models.UserViewModel
+
+@{
+    ViewBag.Title = "Reset Password";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script>
+    function OnStarted() {
+        //show msg div with text: "Submitting..."
+        $('#divTarget').fadeIn(1000);
+        $('#divTarget').removeClass('hide');
+        $('#divTarget').text('Setting...');
+    }
+    function OnCompleted() {
+        $("#divTarget").delay(5000).fadeOut(2000);
+        //clear inputs
+        $('.form-control').val('');
+
+    }
+</script>
+
+
+<h2>Reset Password</h2>
+<hr/>
+@using (Ajax.BeginForm("ResetPw", "User", new AjaxOptions
+{
+    HttpMethod = "POST",
+    OnBegin = "OnStarted",
+    OnComplete = "OnCompleted",
+    UpdateTargetId = "divTarget"
+}))
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-group">
+        @Html.LabelFor(m => m.UserName, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.UserName, new { @class = "form-control" })
+            @Html.HiddenFor(m => m.DbId, new { @class = "form-control" })
+            @Html.HiddenFor(m => m.UserId, new { @class = "form-control" })
+        </div>
+    </div>
+    @*<div class="form-group">
+        @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+        </div>
+    </div>*@
+    <div class="form-group">
+        @Html.LabelFor(m => m.NewPassword, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.PasswordFor(m => m.NewPassword, new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.ConfirmPassword, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Reset password" class="btn btn-default" />
+        </div>
+    </div>
+    
+    <div class="alert alert-info alert-dismissible hide" id="divTarget" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>    
+            @Html.ValidationSummary()
+       
+    </div>
+    <p>Click @Html.ActionLink("Here","Login","User") to login again.</p>
+}

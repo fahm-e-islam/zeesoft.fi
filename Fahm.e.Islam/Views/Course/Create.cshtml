@@ -1,0 +1,93 @@
+﻿@model ZeeSoft.ClassRoomJson.Course
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script type="text/javascript">
+    $(document).ready(function () {
+        var max_fields = 10; //maximum input boxes allowed
+        var wrapper = $(".input_fields_wrap"); //Fields wrapper
+        var add_button = $(".add_field_button"); //Add button ID
+
+        var x = 1; //initlal text box count
+        $(add_button).click(function (e) { //on add input button click
+            e.preventDefault();
+            if (x < max_fields) { //max input box allowed
+              
+                $(wrapper).append('<div><input type="text" id="Topics_' + x + '__Description" name="Topics[' + x + '].Description"/><a href="#" class="remove_field">Remove</a></div>'); //add input box
+                x++; //text box increment
+            }
+        });
+
+        $(wrapper).on("click", ".remove_field", function (e) { //user click on remove text
+            e.preventDefault(); $(this).parent('div').remove(); x--;
+        })
+    });
+</script>
+    
+    @using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+        
+                            @Html.HiddenFor(model => model.Id)
+
+
+    <div class="form-horizontal">
+            <div class="page-header">
+    <h1>Create <small>Course</small></h1>
+                <hr/>
+</div>
+            @Html.ValidationSummary(true)
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Name, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Name)
+                    @Html.ValidationMessageFor(model => model.Name)
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.Topics, new { @class = "control-label col-md-2" })
+                 
+    <div class="col-md-10" id="divTopics">
+        <div class="input_fields_wrap">
+            <button class="add_field_button btn btn-primary">Add Field</button><br><br>
+            <div><input type="text" id="Topics_0__Description" name="Topics[0].Description"><a href="#" class="remove_field">Remove</a></div>
+        </div>
+
+    </div>
+            </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.NoOfClasses, new { @class = "control-label col-md-2", @type = "number" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.NoOfClasses)
+                @Html.ValidationMessageFor(model => model.NoOfClasses)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Status, new { @class = "control-label col-md-2", @type = "number" })
+            <div class="col-md-10">
+                @Html.CheckBoxFor(model => model.Status)
+                @Html.ValidationMessageFor(model => model.Status)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Remarks, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.Remarks)
+                @Html.ValidationMessageFor(model => model.Remarks)
+            </div>
+        </div>
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Create" class="btn btn-default" />
+                    </div>
+                </div>
+            </div>
+}
+
+    <div>
+        @Html.ActionLink("Back to List", "Index")
+    </div>

@@ -1,0 +1,29 @@
+﻿@model ZeeSoft.ClassRoomJson.Message
+@{
+    var msgIcon = Fahm_e_Islam.Helpers.Constants.App_Root + "/Content/images/" + Model.MessageType;
+    msgIcon = msgIcon + ".png";
+}
+
+<tr class="linkMsg @Model.MessageStatus" data-id="@Model.Id" data-src="@ViewData["srcMB"]" title="View Massage">
+    <td>
+        <input type="checkbox" name="@Model.Id" id="@Model.Id" />
+        <img src="@msgIcon" title="@Model.MessageType" />
+
+    </td>
+    <td>
+        @Html.Raw(Model.GetFrom())
+    </td>
+    <td>
+        @Html.Raw(Model.GetTo())
+    </td>
+    <td>
+        @Html.Raw(Model.DateCreated)
+    </td>
+    <td>
+            @Model.Body.Truncate(10)
+        <br />
+       
+       
+    </td>
+</tr>
+      

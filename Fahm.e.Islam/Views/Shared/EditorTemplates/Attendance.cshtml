@@ -1,0 +1,6 @@
+﻿@model ZeeSoft.ClassRoomJson.Attendance
+
+@Html.ListBoxFor(x => x.Students, Model.CmbStudents,
+new { @class = "form-control" })
+@Html.ValidationMessageFor(model => model.Students)
+

@@ -1,0 +1,108 @@
+﻿@model ZeeSoft.ClassRoomJson.FileLink
+
+@{
+    ViewBag.Title = "FileLink";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#CourseIds").on("change", function () {
+            var cmbCourses = $(this);
+            var cmbClasses = $("#ClassIds");
+           // console.log(cmbCourses);
+           var courseId = cmbCourses.val();
+           console.log(courseId);
+            var url = '@Url.Action("GetClassesByCourseIds", "Teacher")'; // Don't hard code your url's!
+            $.getJSON("/Teacher/GetClassesByCourseIds?courseId=" + courseId, function (response) {
+                console.log(response);
+               
+                //$.getJSON(url, { courseId: courseId }, function (response) {
+                cmbClasses.empty(); // remove any existing options
+                $.each(response, function (index, item) {
+                    console.log(this.Text);
+                    //$("#ClassIds").addOption(this.Value, this.Text);
+                    cmbClasses.append($('<option/>').text(this.Text).val(this.Value));
+                    });
+                });
+            });
+        $("#ClassIds").on("change", function () {
+            var cmbClasses = $(this);
+            var cmbStudent = $("#StudentIds");
+            // console.log(cmbCourses);
+            var classId = cmbClasses.val();
+            console.log(classId);
+          
+            $.getJSON("/Teacher/GetStudentsByClassId?classId=" + classId, function (response) {
+                console.log(response);
+                cmbStudent.empty(); // remove any existing options
+                $.each(response, function (index, item) {
+                   // console.log(this.Text);
+                    cmbStudent.append($('<option/>').text(this.Text).val(this.Value));
+                });
+            });
+        });
+
+        });
+
+    
+
+</script>
+<h2>Manage File Access Rights</h2>
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(model => model.Id)
+    <div class="form-horizontal">
+        <h4>@*File Rights*@</h4>
+        <hr />
+        @Html.ValidationSummary(true)
+
+        @Html.HiddenFor(model => model.Id)
+        @Html.HiddenFor(model => model.FileId)
+        <div class="form-group">
+            @Html.LabelFor(model => model.Remarks, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Remarks)
+                @Html.ValidationMessageFor(model => model.Remarks)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.CmbCourse, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                
+                @Html.ListBoxFor(x => x.CourseIds, Model.CmbCourse, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.CourseIds)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.CmbClass, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+
+                @Html.ListBoxFor(x => x.ClassIds, Model.CmbClass, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.ClassIds)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.CmbStudent, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+
+                @Html.ListBoxFor(x => x.StudentIds, Model.CmbStudent, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.StudentIds)
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Files")
+</div>

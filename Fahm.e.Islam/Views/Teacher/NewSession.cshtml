@@ -1,0 +1,203 @@
+﻿@model ZeeSoft.ClassRoomJson.ClassSession
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script>
+    var classDuration = "@SessionCache.Teacher_CurrentSessionCalc.Duration";
+
+    $(document).ready(function () {
+        $("#txtTimer").val(classDuration);
+        $('#btnEndSession').prop('disabled', true);
+        //change attendance/students on ClassId change
+        //$('#ClassId').on('change', function () {
+        //    $.ajax({
+        //        url: '/Teacher/ChangeClass?id='+$('#ClassId').val(),
+        //        type: 'GET',        
+        //        contentType: 'application/json; charset=utf-8',
+        //        success: function (data) {
+        //            console.log(data);
+        //            var studentsList = $("#Attendance_Students");
+        //            var markup = '';
+        //            for (var x = 0; x < data.length; x++) {
+        //                markup += '<option value="' + data[x].Value + '">' + data[x].Text + '</option>';
+        //            }
+        //            studentsList.html(markup).show();
+        //        },
+        //        error: function () {
+        //            alert("error");
+        //        }
+        //    });
+        //});
+        $("#btnEndSession").on("click", function () {
+            EndSession();
+        });
+        //var dtTime = new Date();
+        //var mins = parseInt(classDuration.split(":")[1]);
+        //console.log(mins);
+        // dtTime.setMinutes(dtTime.getMinutes() + mins);
+        // console.log(dtTime);
+        // $("#timeRemaining").val(dtTime.toLocaleString());
+        
+    });
+    
+   
+    function OnStarted() {
+        //show msg div with text: "Submitting..."
+        //$('#divMsgBack').fadeIn(1000);
+        //$('#divMsgBack').removeClass('hide');
+        //$('#divMsgBack').text('Submitting...');
+    }
+    function EndSession() {
+        var ai = {
+            Address1: "423 Judy Road",
+            Address2: "1001",
+            City: "New York",
+            State: "NY",
+            ZipCode: "10301",
+            Country: "USA"
+        };
+        //notify server to End Session
+        $('#btnSession').prop('disabled', true);
+        alert("Class Session Time Out!");
+        $.ajax({
+            url: '/Teacher/EndSession',
+            type: 'POST',
+            data: JSON.stringify(ai),
+            contentType: 'application/json; charset=utf-8',
+            success: function (data) {
+                // alert("ok");
+                location.reload();
+            },
+            error: function () {
+                alert("error");
+            }
+        });
+    }
+    function OnCompleted() {
+      
+        var newClassSessionCalcJson = $("#NewClassSessionCalc").text();
+        console.log(newClassSessionCalcJson);
+        var NewClassSessionCalc = JSON.parse(newClassSessionCalcJson);
+     
+        console.log(NewClassSessionCalc);
+       
+        if (NewClassSessionCalc.Mode == "0") {//Session Started
+
+            //2015/12/12 24:00:00",
+            var tempTimeOut = '2015/12/19 15:35:00';
+            console.log("timeEnd:" + NewClassSessionCalc.EndTime);
+            $("#divCountdown")
+            .countdown(NewClassSessionCalc.EndTime, function (event) {
+                console.log(event);
+                if (event.type == 'finish') {
+                    EndSession();
+                }
+                //console.log(event.strftime('%H:%M:%S'));
+                //$("#timeRemaining").val(timeEnd);
+                $(this).text(event.strftime('%H:%M:%S'));
+            });//.on('finish.countdown', function (event) {
+                //$(this).parent()
+                //  .addClass('ending')
+                //.html('<strong>Time Out!</strong>');
+               
+
+            //});
+            $('#divCountdown').fadeIn(1000).removeClass('hide');
+            //$('#divCountdown').countdown('resume');
+            //$('#mode').val("0");
+            NewClassSessionCalc.Mode = 0;
+            //timer = startTime();
+            $('#btnSession').val("Pause Session");
+            
+            $('#btnEndSession').prop('disabled', false);
+
+        }
+        else
+        {
+            //$('#mode').val("1");
+            NewClassSessionCalc.Mode = 1;
+            $('#btnSession').val("Start Session");
+            //$("#divCountdown").delay(1000).fadeOut(2000);
+            $('#divCountdown').countdown('pause');
+            //$("#timeRemaining").val(timeEnd);
+
+            
+        }
+
+    }
+</script>
+
+<h2>New Session</h2>
+
+@using (Ajax.BeginForm("StartStopSession", "Teacher", new AjaxOptions
+{
+    HttpMethod = "POST",
+    UpdateTargetId = "NewClassSessionCalc",
+    OnBegin = "OnStarted",
+    OnComplete = "OnCompleted"
+})
+                )
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(model => model.Id)
+    <div class="form-horizontal">
+      
+        <hr />
+        @Html.ValidationSummary(true)
+
+        <div class="form-group">
+            @Html.Label("Duration:", new { @class = "control-label col-md-2" })
+          
+
+            <div class="col-md-10">
+                @Html.TextBox("txtTimer",null , new { @class = "control-label col-md-2" })
+              
+            </div>
+        </div>
+
+        @*<div class="form-group">
+            @Html.LabelFor(model => model.CmbClasses, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("ClassId", Model.CmbClasses, new { @class = "control-label col-md-2" })
+                @Html.ValidationMessageFor(model => model.CmbClasses)
+            </div>
+        </div>*@
+
+
+        @Html.HiddenFor(x => x.ClassScheduleId)
+
+
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Attendance, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @*@Html.DropDownList("RoleIds", Model.CmbRoles)*@
+                @Html.EditorFor(x => x.Attendance, new { @class = "form-control" })
+           
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Remarks, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextAreaFor(model => model.Remarks)
+                @Html.ValidationMessageFor(model => model.Remarks)
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                @*<input type="hidden" id="mode" name="mode" value="1" />*@
+                 <input type="submit" id="btnSession" value="Start Session" class="btn btn-default" />
+                 <input type="button" id="btnEndSession" value="End Session" class="btn btn-success" />
+
+            </div>
+
+        </div>
+        <div id="divCountdown" class="alert alert-success hide" role="alert">
+        </div>
+        <div id="NewClassSessionCalc" name="NewClassSessionCalc" />
+
+    </div>
+}

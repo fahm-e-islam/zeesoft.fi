@@ -1,0 +1,29 @@
+﻿@model ZeeSoft.ClassRoomJson.ResourceFile
+
+
+            <tr>
+                <td>
+
+                    <!--  http://stackoverflow.com/questions/19975689/download-file-from-link-inside-my-webpage-->
+                    <a href="/File/Download?file=@Model.Path&name=@Model.FileName" alt="@Model.Remarks" target="_blank">@Model.FileName</a>
+
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.Links.Remarks)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.DateModified)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(model => model.DateCreated)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.Size)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.SharedBy)
+                </td>
+            </tr>
+    
+

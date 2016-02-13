@@ -1,0 +1,23 @@
+﻿@model ZeeSoft.ClassRoomJson.ClassSession
+@{
+    var clsSchedule = ZeeSoft.ClassRoomJson.Academy.Current.GetClassScheduleById(Model.ClassScheduleId);
+    var clsName = ZeeSoft.ClassRoomJson.Academy.Current.GetClassById(clsSchedule.ClassId).ClassDisplayName;
+    string studentNames = "";
+    var studentIds = Model.Attendance.Students;
+    foreach (var item in studentIds)
+    {
+        studentNames += " <span class='badge'>"+
+            ZeeSoft.ClassRoomJson.Academy.Current.GetStudentById(item).Name+"</span>";
+    }
+    
+}
+<tr>
+    <td>@clsName </td>
+    <td>@Html.Raw(studentNames)</td>
+    <td>@Html.DisplayFor(x => x.StartTime)</td>
+    <td>@Html.DisplayFor(x => x.EndTime)</td>
+    <td>@Model.TimeElapsed</td>
+    <td>@Html.DisplayFor(x => x.Remarks)</td>
+</tr>
+
+

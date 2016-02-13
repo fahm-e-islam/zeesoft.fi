@@ -1,0 +1,16 @@
+﻿@model ZeeSoft.ClassRoomJson.ActivityDay
+
+
+<tr>
+   
+    <td>
+        @Html.HiddenFor(x => x.DayOfYear)
+        @Html.HiddenFor(x => x.Id)
+        @Html.HiddenFor(x => x.Date)
+        @Html.Raw(new DateTime(Model.Date.Year, Model.Date.Month, Model.Date.Day).ToString("D"))
+</td>    
+    <td>@Html.EditorFor(x => x.ActivityStatus) </td>
+    <td>@Html.EditorFor(x => x.Remarks)</td>
+</tr>
+
+

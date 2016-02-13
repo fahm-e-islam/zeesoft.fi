@@ -1,0 +1,16 @@
+﻿@model IEnumerable<ZeeSoft.ClassRoomJson.ActivityDay>
+
+<table class="table table-bordered table-responsive table-hover">
+    <thead class="bg-success">
+        <tr>
+            <th>Date</th>
+            <th>Status</th>
+            <th>Remarks</th>
+
+        </tr>
+
+    </thead>
+    <tbody class="bg-info">
+        @Html.EditorForModel(Model)
+    </tbody>
+</table>

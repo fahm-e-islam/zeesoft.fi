@@ -1,0 +1,215 @@
+﻿@{
+    ViewBag.Title = "Course";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+    <div class="panel panel-primary">
+        <div class="panel-heading text-center"><h2>Courses</h2></div>
+        <div class="panel-body">
+       
+            <!--courses-->
+            <div class="media col-sm-11">
+                <div class="media-right pull-right">
+                    <img class="media-object  img-thumbnail img-responsive" src="~/Content/pics/media1.jpg" alt="...">
+                </div>
+                <div class="media-body media-right">
+
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title"><span class="badge">I -</span> Quran Reading with Tajweed( تجوید و نا ظرۂ قران )</h4>
+
+                        </div>
+                        <div class="panel-body">
+                            @Html.Partial("QuranReading")
+                            <ul>
+                                <li>اھميت تجويد</li>
+                                <li>مشق قرات</li>
+                                <li>پہچان مخارج</li>
+                                <li>اھم مسائل تجويد</li>
+                            </ul>
+                        </div>
+                        <div class="panel-footer"><span class="badge">Duration: 3 Months / 60 classes</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="media col-sm-11">
+                <div class="media-right pull-right">
+                    <img class="media-object  img-thumbnail img-responsive" src="~/Content/pics/media2.jpg" alt="...">
+                </div>
+                <div class="media-body media-right">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title"><span class="badge">II -</span> Quran Memorizaion( حفظ قران )<span class="courseTime"></span></h4>
+
+                        </div>
+                        <div class="panel-body">
+
+                            @Html.Partial("QuranMemorization")
+                            <ul>
+                                <li>علم اوقاف </li>
+                                <li>گردان</li>
+                                <li>ھفتہ وار امتحان</li>
+                            </ul>
+                        </div>
+                        <div class="panel-footer">
+                            <span class="badge">Duration: 15 Months / 300 classes</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="media col-sm-11">
+                <div class="media-right pull-right">
+                    <img class="media-object  img-thumbnail img-responsive" src="~/Content/pics/worship.jpg" alt="...">
+                </div>
+                <div class="media-body media-right">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title"><span class="badge">III -</span> Purity &amp; Worship( طھارت و نماز )<span class="courseTime"></span></h4>
+
+                        </div>
+                        <div class="panel-body">
+
+                            @Html.Partial("Purity")
+                            <ul>
+                                <li>اھميت طھارت</li>
+                                <li>اھميت نماز</li>
+                                <li>فرق طھارت اور نظافت کے درمیان</li>
+                                <li>فرق نماز اور ريگر عبادات</li>
+                                <li>طھارت کے دینی و دنیاوی فوائد</li>
+                                <li>نماز کے دینی و دنیاوی فوائد</li>
+                            </ul>
+                        </div>
+                        <div class="panel-footer">
+                            <span class="badge">Duration: 3 Months / 60 classes</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="media col-sm-11">
+                <div class="media-right pull-right">
+                    <img class="media-object  img-thumbnail img-responsive" src="~/Content/pics/tajweed.jpg" alt="...">
+                </div>
+                <div class="media-body media-right">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title"><span class="badge">IV -</span> Easy Arabic &amp; Manners Of Life( آسان عربی و آداب زندگی )<span class="courseTime"></span></h4>
+
+                        </div>
+                        <div class="panel-body">
+
+                            @Html.Partial("Purity")
+                            <ul>
+                                <li>زخیرہ الفاظ عربی</li>
+                                <li>عام عربی بول چال</li>
+                                <li>اہمیت عربی زبان</li>
+                                <li>اسلامی آداب زندگی اور اسکے فوائد</li>
+                                <li>اسلامی آداب کی خصوصیات خاصہ</li>
+                            </ul>
+                        </div>
+                        <div class="panel-footer">
+                            <span class="badge">Duration: 9 Months / 180 classes</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="media col-sm-11">
+                <div class="media-right pull-right">
+                    <img class="media-object  img-thumbnail img-responsive" src="~/Content/pics/belief.jpg" alt="...">
+                </div>
+                <div class="media-body media-right">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+
+                            <h4 class="panel-title"><span class="badge">V -</span> Beliefs &amp; Duties Of Islam( عقائد و فرائض اسلام )<span class="courseTime"></span></h4>
+
+                        </div>
+                        <div class="panel-body">
+
+                            @Html.Partial("Beliefs")
+                            <ul>
+                                <li>تعرف عقائد و فریضہ</li>
+                                <li>ضروریات دین</li>
+                                <li>اہمیت عقائد و فرائض</li>
+                            </ul>
+                        </div>
+                        <div class="panel-footer">
+                            <span class="badge">Duration: 3 Months / 60 classes</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="media col-sm-11">
+                <div class="media-right pull-right">
+                    <img class="media-object  img-thumbnail img-responsive" src="~/Content/pics/media4.jpg" alt="...">
+                </div>
+                <div class="media-body media-right">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title"><span class="badge">VI -</span> Hadith &amp; Islamic Fiqh( احادیث مبارکہ و فقۂ اسلام )<span class="courseTime"></span></h4>
+                         
+
+                        </div>
+                        <div class="panel-body">
+                            @Html.Partial("HadithFiqh")
+                            <ul>
+                                <li>حفظ احادیث مبارکہ</li>
+                                <li>ترجمہ و تشریح ا حادیث مبارکہ</li>
+                                <li>مقام احادیث اسلام میں</li>
+                                <li>حدیث کی تعریف ، موضوع و غرض و غایت</li>
+                                <li>اہم د یني مسا ئل زند گی</li>
+                                <li>فقہ کا تعارف </li>
+                                <li>فقہ کی اہمیت و ا فادیت</li>
+                            </ul>
+                          
+                        </div>
+                        <div class="panel-footer">
+                            <span class="badge">Duration: 18 Months / 360 classes</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="media col-sm-11">
+                <div class="media-right pull-right">
+                    <img class="media-object  img-thumbnail img-responsive" src="~/Content/pics/history.jpg" alt="...">
+                </div>
+                <div class="media-body media-right">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title"><span class="badge">VII -</span> Islamic Hostory &amp; Quranic Translation( تاریخ اسلام و ترجمہ قران )<span class="courseTime"></span></h4>
+                                               
+
+                        </div>
+                        <div class="panel-body">
+                            @Html.Partial("IslamHstry")
+                            <ul>
+                                <li>
+                                    : ترجمہ
+                                    <ol>
+                                        <li>سورۃ فاتحہ</li>
+                                        <li>سورۃ نساء</li>
+                                        <li>سورۃ کہف</li>
+                                        <li>سورۃ بنی اسرائیل</li>
+                                        <li>سورۃ نور</li>
+                                        <li>سورۃ احزاب</li>
+                                        <li>سورۃ فتح</li>
+                                    </ol>
+                                </li>
+                                <li>سیرت ا لنبی صلی ا للہ علیہ وسلم</li>
+                                <li>سیرت خلفاء اربعہ رضی ا للہ عنھم اجمعین</li>
+                                <li>سیرت ائمۃ اربعہ رضی اللہ تعا لی</li>
+                                <li>تعارف دور سلا طین مسلمین</li>
+                                <li>اسلام 20 ویں صدی میں</li>
+                                <li>اسلام 21 ویں صدی میں</li>
+                            </ul>
+                                           
+                        </div>
+                        <div class="panel-footer">
+                            <span class="badge">Duration: 36 Months / 720 classes</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+     </div>
+                          

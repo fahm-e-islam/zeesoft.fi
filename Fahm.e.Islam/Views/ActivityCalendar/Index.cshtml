@@ -1,0 +1,80 @@
+﻿
+@model List<ZeeSoft.ClassRoomJson.ActivityDay>
+
+@{
+    ViewBag.Title = "Update Activity Calendar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<script>
+
+    $(document).ready(function () {
+        $("#divUpdateTarget").addClass("hide");
+        $("#CmbPeriod").change(function () {
+            window.location.href = '/ActivityCalendar/Index?period=' + $(this).val();
+
+        });
+        var selected = "@ViewBag.SelectedPeriod";
+        //alert(selected);
+        $("#CmbPeriod option[value="+selected+"]").attr('selected','selected');
+
+    });
+
+
+    function OnStarted() {
+        $("#divUpdateTarget").html("Saving...");
+    }
+
+    function OnCompleted() {
+        $("#divUpdateTarget").removeClass("hide");
+        $("#divUpdateTarget").html("Changes Saved");
+
+
+    }
+</script>
+
+@using (Ajax.BeginForm("UpdateCalendar", "ActivityCalendar", new AjaxOptions
+{
+    HttpMethod = "POST",
+    UpdateTargetId = "divUpdateTarget",
+    OnBegin = "OnStarted",
+    OnComplete = "OnCompleted"
+}))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <br />
+        <h4>@ViewBag.Title</h4>
+        <hr />
+        @Html.ValidationSummary(true)
+        <form class="form-inline" role="form">
+            <div class="form-group col-sm-8">
+                <select class="form-control col-sm-2" id="CmbPeriod" name="CmbPeriod">
+                    <option value="0">Weekly</option>
+                    <option value="1">Monthly</option>
+                    <option selected="selected" value="2">Yearly</option>
+                </select>
+                <input type="submit" value="Update Holidays" class="btn btn-default col-sm-3" />
+                <span class="alert-info alert col-sm-3" id="divUpdateTarget"></span>
+                </div>
+           </form>
+       <table class="table table-bordered table-responsive table-hover">
+            <thead class="bg-success">
+                <tr>
+                    <th>Date</th>
+                    <th>Status</th>
+
+                    <th>Remarks</th>
+
+                </tr>
+            </thead>
+            <tbody class="bg-info">
+                @Html.EditorForModel(Model)
+            </tbody>
+        </table>
+
+       
+    </div>
+}
+

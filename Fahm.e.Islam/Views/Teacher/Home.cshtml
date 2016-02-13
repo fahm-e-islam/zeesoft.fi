@@ -1,0 +1,70 @@
+﻿@model WebApplication2.Models.TeacherDashboard
+@{
+    ViewBag.Title = "Home";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<br><br>
+<div class="panel panel-primary">
+
+    <div class="panel-body">
+        <div class="jumbotron">
+            <h3>My Classes:</h3>
+            <div id="tboard_Classes">
+                    <table class="table table-bordered table-responsive table-striped table-hover">
+                        <thead class="bg-success">
+                            <tr>
+                                <th>Name</th>
+                                <th>Course</th>
+                                <th>Duration<small>(hh:mm:ss)</small></th>
+                                <th>Remarks</th>
+                                <th>Status</th>
+                                
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @Html.DisplayFor(x => x.Classes)
+                        </tbody>
+                    </table>
+            </div>
+            <h3>My Sessions:</h3>
+            <div id="tboard_Sessions">
+                <table class="table table-bordered table-responsive table-striped table-hover">
+                    <thead class="bg-success">
+                        <tr>
+                            <th>Class Name</th>
+                            <th>Students</th>
+                            <th>Start Time</th>
+                            <th>End Time</th>
+                            <th>Time Elapsed<br /><small>(hh:mm:ss)</small></th>
+                            <th>Remarks</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @Html.DisplayFor(x => x.Sessions)
+                    </tbody>
+                </table>
+            </div>
+
+            <h3>My Schedule:</h3>
+            <div id="tboard_ClassSchedules">
+                <table class="table table-bordered table-responsive table-striped table-hover">
+                    <thead class="bg-success">
+                        <tr>
+                            <th>Class</th>
+                            <th>Start</th>
+                            <th>End</th>
+                            <th>Status</th>
+                            <th>Remarks</th>                        
+                            <th>Actions</th>  
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @Html.DisplayFor(x => x.ClassSchedules)
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+     
+    </div>
+</div>

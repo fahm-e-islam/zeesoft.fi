@@ -1,0 +1,53 @@
+﻿
+@{
+    ViewBag.Title = "Forget Password";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script>
+    function OnStarted() {
+        //show msg div with text: "Submitting..."
+        $('#divTarget').fadeIn(1000);
+        $('#divTarget').removeClass('hide');
+        $('#divTarget').text('Submitting...');
+    }
+    function OnCompleted() {
+        $("#divTarget").delay(5000).fadeOut(2000);
+        //clear inputs
+        $('.form-control').val('');
+
+    }
+</script>
+
+
+
+<h2>Forgot Password</h2>
+<hr/>
+@using (Ajax.BeginForm("ForgetPw", "User", new AjaxOptions
+{
+    HttpMethod = "POST",
+    OnBegin="OnStarted",
+    OnComplete="OnCompleted",
+    UpdateTargetId = "divTarget"
+}))
+{
+    @Html.AntiForgeryToken()
+
+<div class="form-horizontal">
+    <div class="form-group">
+        @Html.Label("Email Address:", new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBox("Email",null, new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" class="btn btn-default" value="Submit" />
+        </div>
+    </div>
+    <div class="alert alert-info alert-dismissible hide" id="divTarget" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>    
+            @Html.ValidationSummary()
+       
+    </div>
+</div>
+}

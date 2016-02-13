@@ -1,0 +1,53 @@
+﻿@using ZeeSoft.Web.MVC.FI.Helper;
+@model ZeeSoft.ClassRoomJson.Class
+
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+  <div class="page-header">
+    <h2>Class Details: @Html.DisplayFor(model => model.ClassDisplayName)</h2>
+    <hr />
+</div>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.LabelFor(model => model.CmbCourse, new { @class = "control-label col-md-2" })
+           </dt>
+         <dd>
+                @Html.Raw(ZeeSoft.ClassRoomJson.Academy.Current.GetCourseById(Model.CourseId).Name)
+            </dd>
+        <dt>
+            @Html.LabelFor(model => model.CmbTeachers, new { @class = "control-label col-md-2" })
+        </dt>
+        <dd>
+            @Html.Raw(ZeeSoft.ClassRoomJson.Academy.Current.GetTeacherById(Model.TeacherId).Name)
+        </dd>
+        <dt>
+            @Html.LabelFor(model => model.Duration, new { @class = "control-label col-md-2" })
+        </dt>
+        <dd>
+            <p>No Of Such Classes:  @Html.Raw(ZeeSoft.ClassRoomJson.Academy.Current.GetCourseById(Model.CourseId).NoOfClasses)</p>
+            <p>Class Duration: @Html.DisplayFor(model => model.Duration)</p>
+            <p>Total Course Time (in Mins): @Html.Raw(Model.TotalNoOfMinutes)</p>
+            <p>Total Course Time (in Hrs): @Html.Raw(Model.TotalNoOfHours)</p>
+            
+        </dd>
+        <dt>
+            @Html.LabelFor(model => model.Status, new { @class = "control-label col-md-2" })
+        </dt>
+        <dd>
+            @Html.Raw(Model.Status.ToYesNo())
+        </dd>
+        <dt>
+            @Html.LabelFor(model => model.Remarks, new { @class = "control-label col-md-2" })
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Remarks)
+        </dd>
+   </dl>
+            <p>
+                @Html.ActionLink("Schedule", "EditSchedule", new { classId = Model.Id }) |
+                @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+                @Html.ActionLink("Back to List", "Index")
+            </p>

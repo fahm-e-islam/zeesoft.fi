@@ -1,0 +1,68 @@
+﻿@model Fahm_e_Islam.Models.MessageViewModel
+<style>
+    .container {
+        border: 15px solid lightgrey;
+        box-shadow: 0 0 30px gray;
+        font-family: sans-serif, 'Avant Garde';
+        font-style: italic;
+    }
+
+    h2 {
+        font-weight: bold;
+        font-size: x-large;
+    }
+
+    h3 {
+        font-weight: bold;
+        font-size: large;
+        color: coral;
+    }
+
+    p {
+        font-size: medium;
+    }
+
+    .social-icons {
+        margin: 10px;
+    }
+
+    .unstyle-list {
+        list-style-type: none;
+        display: inline-flexbox;
+    }
+    .btn
+    {
+
+    }
+</style>
+
+<div class="container">
+    <img src="content/pics/logo.gif" class="img-responsive" />
+    <hr />
+    <h2>Dear Admin,</h2>
+    <p>Here's what <strong>@Model.FullName</strong> <text> wants to say:</text></p><br>
+    
+    
+
+    <div>
+        <dl class="dl-horizontal">
+        
+            <dd>
+                @Model.Message
+            </dd>
+
+        </dl>
+        <hr />
+        <div>
+            @Model.FullName<text>'s Contact Information:</text><br />
+
+            <p>Email: @Model.Email</p>
+            <p>Pohone: @Model.PhoneNo</p>
+            <p>City: @Model.City</p>
+            <p>Country: @Model.Country</p>
+             
+        </div>
+
+    </div>
+    
+</div>

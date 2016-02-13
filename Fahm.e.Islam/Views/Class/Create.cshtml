@@ -1,0 +1,81 @@
+﻿@model ZeeSoft.ClassRoomJson.Class
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <div class="page-header">
+            <h1>Create <small>Class</small></h1>
+            <hr />
+        </div>
+        @Html.ValidationSummary(true)
+        <div class="form-group">
+            @Html.LabelFor(model => model.Name, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Name)
+                @Html.ValidationMessageFor(model => model.Name)
+            </div>
+        </div>     
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ClassDisplayName, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ClassDisplayName)
+                @Html.ValidationMessageFor(model => model.ClassDisplayName)
+            </div>
+        </div>     
+        <div class="form-group">
+            @Html.LabelFor(model => model.CmbCourse, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("CourseId", Model.CmbCourse, new { @class = "control-label col-md-2" })
+                @Html.ValidationMessageFor(model => model.CmbCourse)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.CmbTeachers, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("TeacherId", Model.CmbTeachers, new { @class = "control-label col-md-2" })
+              
+                @Html.ValidationMessageFor(model => model.CmbTeachers)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Duration, new { @class = "control-label col-md-2", @type = "number" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Duration)
+                @Html.ValidationMessageFor(model => model.Duration)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Status, new { @class = "control-label col-md-2", @type = "number" })
+            <div class="col-md-10">
+                @Html.CheckBoxFor(model => model.Status)
+                @Html.ValidationMessageFor(model => model.Status)
+            </div>
+        </div>
+       
+        <div class="form-group">
+            @Html.LabelFor(model => model.Remarks, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextAreaFor(model => model.Remarks)
+                @Html.ValidationMessageFor(model => model.Remarks)
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

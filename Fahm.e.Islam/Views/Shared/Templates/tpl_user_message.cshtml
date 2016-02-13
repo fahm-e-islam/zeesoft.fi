@@ -1,0 +1,73 @@
+﻿@model Fahm_e_Islam.Models.MessageViewModel
+<style>
+    .container {
+        border: 15px solid lightgrey;
+        box-shadow: 0 0 30px gray;
+        font-family: sans-serif, 'Avant Garde';
+        font-style: italic;
+        padding-left: 100px;
+        padding-right: 100px;
+    }
+
+    .heading {
+        color: darkorange;
+    }
+
+    .icons {
+        margin: 5px;
+    }
+
+        .icons > li {
+            list-style-type: none;
+            display: inline-table;
+            margin-right: 10px;
+            -webkit-transition: all 2s;
+        }
+</style>
+
+<div class="container">
+    <img src="content/pics/logo.gif" />
+    <hr />
+    <h2 class="heading">Dear Admin,</h2>
+    <p>Here's what <strong>@Model.FullName</strong> <text> wants to say:</text></p><br>
+    <div>
+        <dl class="dl-horizontal">
+
+            <dd>
+                @Model.Message
+            </dd>
+
+        </dl>
+        <hr />
+        <div>
+            @Model.FullName<text>'s Contact Information:</text><br />
+
+            <p><b>Email:</b> @Model.Email</p>
+            <p><b>Pohone:</b> @Model.PhoneNo</p>
+            <p><b>City:</b> @Model.City</p>
+            <p><b>Country:</b> @Model.Country</p>
+        </div>
+    </div>
+    <ul class="icons">
+        <li>
+            <a href="http://www.facebook.com/fahm-e-islam" target="_blank">
+                <img src="content/pics/facebook500.png" width="50" height="50" title[style="background:black;" ]="Facebook" />
+            </a>
+        </li>
+        <li>
+            <a href="http://www.plus.google.com/fahm-e-islam" target="_blank">
+                <img src="content/pics/googleplus.png" width="50" height="50" title="Google Plus" />
+            </a>
+        </li>
+        <li>
+            <a href="http://www.twitter.com/fahm-e-islam" target="_blank">
+                <img src="content/pics/twitter.png" width="50" height="50" title="Twitter" />
+            </a>
+        </li>
+        <li>
+            <a href="http://www.linkedin.com/fahm-e-islam" target="_blank">
+                <img src="content/pics/linkedin.png" width="50" height="50" title="Linked In" />
+            </a>
+        </li>
+    </ul>
+</div>

@@ -1,0 +1,72 @@
+﻿@model ZeeSoft.ClassRoomJson.Teacher
+<style>
+    .container {
+        border: 15px solid lightgrey;
+        box-shadow: 0 0 30px gray;
+        font-family: sans-serif, 'Avant Garde';
+        font-style: italic;
+    }
+
+    h2 {
+        font-weight: bold;
+        font-size: x-large;
+    }
+
+    h3 {
+        font-weight: bold;
+        font-size: large;
+        color: coral;
+    }
+
+    p {
+        font-size: medium;
+    }
+
+    .social-icons {
+        margin: 10px;
+    }
+
+    .unstyle-list {
+        list-style-type: none;
+        display: inline-flexbox;
+    }
+</style>
+
+<div class="container">
+    <img src="content/pics/logo.gif" class="img-responsive" />
+    <hr />
+    <h2>Respected @Model.Name,</h2>
+    <p>Congratulations - Your Fahm-e-Islam account has been created!</p><br>
+
+    <h3>Access Your Account with:</h3>
+    <p><b>User ID: </b>@Model.UserId<br><b>Password: </b>@Model.Password</p><br>
+    <div style="background:#3068a2;border-collapse:collapse;border-radius:3px;padding:5px;margin:0px;background:-moz-linear-gradient(top,#4687ce 0%,#3068a2 100%);background:-webkit-linear-gradient(top,#4687ce 0%,#3068a2 100%);background:-o-linear-gradient(top,#4687ce 0%,#3068a2 100%);background:-ms-linear-gradient(top,#4687ce 0%,#3068a2 100%);background:linear-gradient(top,#4687ce 0%,#3068a2 100%)">
+        <a style="color:#3b73af;text-decoration:none;color:#fff;font-weight:bold;padding:6px;font-size:14px;line-height:1.429;font-family:Arial,sans-serif" href="http://Fahm-e-islam.com/User/Login" target="_blank">Log on to Fahm-e-Islam!</a>
+
+    </div>
+
+    <div class="social-icons">
+        <ul class="unstyle-list">
+            <li>
+                <a href="http://www.facebook.com/fahm-e-islam" target="_blank">
+                    <img src="http://wwwf.imperial.ac.uk/utils/assets/apps/news/img/icon-fb.png" width="50" height="50" title="Facebook" />
+                </a>
+            </li>
+            <li>
+                <a href="http://www.plus.google.com/fahm-e-islam" target="_blank">
+                    <img src="https://lh4.googleusercontent.com/-0smy5luOUOg/U0T93nQTDcI/AAAAAAAAAAs/FwshzIkbWvQ/s40-no/google_plus.png" width="50" height="50" title="Google Plus" />
+                </a>
+            </li>
+            <li>
+                <a href="http://www.twitter.com/fahm-e-islam" target="_blank">
+                    <img src="https://ma.twimg.com/twitter-mobile/99b302bafd9e9a67f1caf75225cbb6e7e23e6ffe/images/favicon.ico" width="50" height="50" title="Twitter" />
+                </a>
+            </li>
+            <li>
+                <a href="http://www.linkedin.com/fahm-e-islam" target="_blank">
+                    <img src="https://pbs.twimg.com/profile_images/614583061448036352/CBpFkPaz.png" width="50" height="50" title="Linked In" />
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>

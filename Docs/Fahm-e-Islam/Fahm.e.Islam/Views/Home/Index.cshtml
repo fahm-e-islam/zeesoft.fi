@@ -1,0 +1,118 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<br><br><br>
+<!--Slider-->
+
+<div class="panel panel-primary">
+    <div class="panel-heading text-center"><h2>Welcome To Fahm-e-Islam</h2></div>
+    <div class="panel-body">
+        <p>
+            As Muslims it is important that we learn to read the Quran correctly (tajweed) and recite it in a beautiful manner. It is common knowledge that one can never truly enjoy the Quran until they can recite it in the correct manner. We are proud to provide distinguished services for Muslims interested studying the Quran with the benefit of new technology.
+            Quran Teaching, an international Islamic school, that has been providing online Quran Tutoring services since 2006, assists you as well as your kids in learning Holy Quran recitation and memorization with proper Tajweed. Register with any of our special range of Quranic courses as per your interest and enter the world of simplified Quran learning platform.
+        </p>
+        <hr>
+        <div class="row text-center">
+            <div class="col-sm-offset-0 col-md-3">
+                <img src="~/Content/pics/tutoring.png" class="img-responsive img-circle center-block bg-info" />
+                <h3>Specialized Tutoring</h3>
+                We are not individual or a home based academy, but we are one of the oldest and most experienced institute since 2006 for Quran Learning. We don’t use third party software* like other home based academies...<br>
+                <a href="" class="btn btn-sm btn-success">Learn More >></a>
+            </div>
+            <div class="col-md-offset-1 col-md-3">
+                <img src="~/Content/pics/experience.png" class="img-responsive img-circle center-block bg-info" />
+                <h3>Our Experience</h3>
+                Seven years of successful experience in teaching Quran online, makes us righteous in saying that we have always been providing quality services to our students with integrity, credibility and excellence, Alhamdulillah!<br>
+                <a href="" class="btn btn-sm btn-success">Learn More >></a>
+            </div>
+            <div class="col-md-offset-1 col-md-3">
+                <img src="~/Content/pics/accessiblity.png" class="img-responsive img-circle center-block bg-info" />
+                <h3>Accessibility</h3>
+                You can become a good Quran reciter while sitting in the comfort of your own home and at a time most suited to you. This unique versatility allows you to pursue your day to day activities and also progress spirituality.
+                <a href="" class="btn btn-sm btn-success">Learn More >></a>
+            </div>
+        </div><br><br>
+        <div class="row text-center">
+            <div class="col-sm-offset-0 col-md-3">
+                <img src="~/Content/pics/trial.png" class="img-responsive img-circle center-block bg-info" />
+                <h3>Free Trial</h3>
+                Everyone can try our First Week lessons as Free Trial without any obligation attached. Our regular classes can be started from just in $10/First Month. You can also get discount on affordability bases.<br>
+                <a href="" class="btn btn-sm btn-success">Learn More >></a>
+            </div>
+            <div class="col-md-offset-1 col-md-3">
+                <img src="~/Content/pics/class.png" class="img-responsive img-circle center-block bg-info" />
+                <h3>Virtual Classroom</h3>
+                A true learning experience with tools like multi-way audio, video streams, integrated chat, online whiteboard, application sharing, file transfer, and more. Drawing tools make classes interactive.<br>
+                <a href="" class="btn btn-sm btn-success">Learn More >></a>
+            </div>
+            <div class="col-md-offset-1 col-md-3">
+                <img src="~/Content/pics/one_classes.png" class="img-responsive img-circle center-block bg-info" />
+                <h3>One On One Classes</h3>
+                All of our courses are conducted online with one on one Real time tutoring. There are no group sessions so a teacher can concentrate on each student individually. Quality classes guaranteed every time.
+                <a href="" class="btn btn-sm btn-success">Learn More >></a>
+            </div>
+        </div>
+        <br><hr>
+
+        <!--Courses-->
+        @*<div class="">
+            <h3>Our Courses</h3>
+            <hr>
+            <div class="panel-group" id="accordion">
+                <div class="panel panel-info">
+                    <div class="panel-heading" data-toggle="collapse" data-parent="#accordion" data-target="#collapseOne">
+                        <h4 class="panel-title accordion-toggle">
+                            Quran Reading With Tajweed
+                        </h4>
+
+                    </div>
+                    <div id="collapseOne" class="panel-collapse collapse fade in">
+                        <div class="panel-body">
+                            <p>
+                                <img src="~/Content/pics/noorani.jpg" class="img-responsive img-rounded img-thumbnail" style="float: left;margin-right: 20px;" />The very basic course for learning to read Holy Quran with proper tajweed is here. The students who are not able to identify Quranic alphabets will be taught in the ways they will learn accurately and quickly. On the completion of this course you will amazingly find yourself reading Quran with proper tajweed and accent. In addition to this etc...
+                                <br>1. Noorani Qaida
+                                <br>2. The Holy Quran
+                                <br>3. Tajweed Book
+                            </p>
+                            @Html.Partial("QuranReading")
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-info">
+                    <div class="panel-heading" data-toggle="collapse" data-parent="#accordion" data-target="#collapseTwo">
+                        <h4 class="panel-title accordion-toggle">
+                            Quran Memorization
+                        </h4>
+
+                    </div>
+                    <div id="collapseTwo" class="panel-collapse collapse fade">
+                        <div class="panel-body">
+                            <p>
+                                <img src="~/Content/pics/thequran.jpg" class="img-responsive img-rounded img-thumbnail" style="float: right;margin-left: 20px;" />Memorizing the Holy Quran simply means learning it by heart. It is one of the miracles of Holy Quran that it is the only book in the world that can be memorized word to word even by children of very young age. At the time of Holy Prophet (peace be upon him), writing things for the purpose of storing them was not usually practiced, hence people used to memorize whatever knowledge they wanted to preserve.
+                            </p>
+                            @Html.Partial("QuranMemorization")
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-info">
+                    <div class="panel-heading" data-toggle="collapse" data-parent="#accordion" data-target="#collapseThree">
+                        <h4 class="panel-title accordion-toggle">
+                            Quran Translation
+                        </h4>
+
+                    </div>
+                    <div id="collapseThree" class="panel-collapse collapse fade">
+                        <div class="panel-body">
+                            <p>
+                                <img src="~/Content/pics/tajweed.jpg" class="img-responsive img-rounded img-thumbnail" style="float: left;margin-right: 20px;" />This course is designed for those who already know how to read Quran but yearn to learn the meanings hidden in the unknown language. If you don’t know how to read Quran, then you should take Quran Reading with Tajweed course first before proceeding to this one. The most inspiring and fascinating aspect in this course is learning in a manner you follow each word and its meaning leading to the collective translation of each verse...
+                            </p>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>*@
+    </div>
+
+</div>

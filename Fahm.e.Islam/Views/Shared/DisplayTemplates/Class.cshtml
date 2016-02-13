@@ -1,0 +1,14 @@
+﻿@model ZeeSoft.ClassRoomJson.Class
+@{
+    var course = ZeeSoft.ClassRoomJson.Academy.Current.GetCourseByClassId(Model.Id);
+    
+}
+<tr>
+    <td>@Model.ClassDisplayName </td>
+    <td>@Html.Raw(course.Name)</td>
+    <td>@Html.DisplayFor(x => x.Duration)</td>
+    <td>@Html.DisplayFor(x => x.Remarks)</td>    
+    <td>@Html.DisplayFor(x => x.Status)</td>
+</tr>
+
+
